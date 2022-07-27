@@ -8,14 +8,17 @@
     <title>書籍一括検索</title>
   </head>
   <body>
-    <h3>
-      本の名前を入力(名前の一部でも可)
-      <br />
-    </h3>
-    <input inputmode="search" type="text" placeholder="ここに本の名前を入力" id="BookName" />
+    <h3>本の名前を入力(名前の一部でも可)</h3>
+    <br />
+    <input
+      inputmode="search"
+      type="text"
+      placeholder="ここに本の名前を入力"
+      id="BookName"
+    />
     <button onclick="SearchBook()">検索</button>
     <span id="result"></span>
-    <br /><br />
+    <br />
     <h4 id="ujiLib"></h4>
     <br />
     <h4 id="ritsLib"></h4>
@@ -72,7 +75,7 @@
 
       var ujiLib = document.getElementById("UnivCoop");
       UnivCoop.innerHTML =
-        "<p class='detail'>(大学生協ページは表示までに時間がかかります)</p>" +
+        "<p class='detail'>(生協ページは表示に時間がかかります)</p>" +
         "<a href='https://online.univ.coop/book/products/?search%5Bcat%5D=0&search%5Bkeyw%5D=" +
         BookName +
         "'>大学生協</a>";
@@ -88,8 +91,11 @@
 
 <style>
   body {
-    line-height: 0.5;
+    line-height: 1;
     font-size: larger;
+  }
+  .detail{
+    font-size: medium;
   }
   #bookoffonline {
     margin-top: 70px;
