@@ -12,7 +12,7 @@
       本の名前を入力(名前の一部でも可)
       <br />
     </h3>
-    <input type="text" placeholder="ここに本の名前を入力" id="BookName" />
+    <input inputmode="search" type="text" placeholder="ここに本の名前を入力" id="BookName" />
     <button onclick="SearchBook()">検索</button>
     <span id="result"></span>
     <br /><br />
@@ -36,6 +36,16 @@
 </html>
 
 <script>
+  let text_form = document.getElementById("BookName");
+
+  text_form.addEventListener("keypress", test_ivent);
+
+  function test_ivent(e) {
+    if (e.keyCode === 13) {
+      SearchBook();
+    }
+    return false;
+  }
   var SearchBook = function () {
     const BookKey = document.getElementById("BookName");
     window.location.href = "/SearchBook/?" + BookKey.value;
@@ -79,9 +89,7 @@
 <style>
   body {
     line-height: 0.5;
-  }
-  .detail {
-    font-size: 14px;
+    font-size: larger;
   }
   #bookoffonline {
     margin-top: 70px;
