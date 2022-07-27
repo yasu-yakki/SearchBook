@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name=”robots” content=”noindex,nofollow”>
+    <meta name="”robots”" content="”noindex,nofollow”" />
     <title>書籍一括検索</title>
   </head>
   <body>
@@ -14,7 +14,7 @@
     </h3>
     <input type="text" id="BookName" />
     <button onclick="SearchBook()">検索</button>
-    <br><br>
+    <br /><br />
     <h4>宇治市図書館</h4>
     <h4 id="ujiLib"></h4>
     <br />
@@ -34,7 +34,7 @@
     <div id="bookoffonline">
       (参考)<a href="https://www.bookoffonline.co.jp/book/CSfTop.jsp?bg=12">
         bookoffonlineのページ
-      </ad>
+      </a>
     </div>
   </body>
 </html>
@@ -45,9 +45,9 @@
 
     var ujiLib = document.getElementById("ujiLib");
     ujiLib.innerHTML =
-      "<a href='https://library.city.uji.kyoto.jp/opac/sp/results?fields%5B0%5D=001&keywords%5B0%5D=" +
+      "<a href='https://library.city.uji.kyoto.jp/opac/sp/results?keyword=" +
       BookName.value +
-      "&matches%5B0%5D=1&narrowField=003&narrowKeywordFrom=&narrowKeywordTo='>宇治市図書館</a>";
+      "'>宇治市図書館</a>";
 
     var ritsLib = document.getElementById("ritsLib");
     ritsLib.innerHTML =
@@ -69,7 +69,7 @@
     KyotoPrifLib.innerHTML =
       "<a href='https://www.library.pref.kyoto.jp/cross/cross.html?q=" +
       BookName.value +
-      "'>京都府図書館</a>";
+      "&filter=3'>京都府図書館(南部エリア)</a>";
   };
 </script>
 
