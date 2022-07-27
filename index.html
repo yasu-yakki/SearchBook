@@ -14,21 +14,17 @@
     </h3>
     <input type="text" id="BookName" />
     <button onclick="SearchBook()">検索</button>
+    <span id="result"></span>
     <br /><br />
-    <h4>宇治市図書館</h4>
     <h4 id="ujiLib"></h4>
     <br />
-    <h4>立命館大学図書館</h4>
     <h4 id="ritsLib"></h4>
     <br />
     <!-- <h4>Bookoff</h4>
     <h4 id="Bookoff"></h4>
     <br /> -->
-    <h4>大学生協書籍注文サイト</h4>
-    <h6 class="detail">(表示までに時間がかかります)</h6>
     <h4 id="UnivCoop"></h4>
     <br />
-    <h4>京都府立図書館</h4>
     <h4 id="KyotoPrifLib"></h4>
     <br />
     <div id="bookoffonline">
@@ -41,35 +37,42 @@
 
 <script>
   var SearchBook = function () {
-    const BookName = document.getElementById("BookName");
+    const BookKey = document.getElementById("BookName");
+    window.location.href = "/?" + BookKey.value;
+  };
 
-    var ujiLib = document.getElementById("ujiLib");
-    ujiLib.innerHTML =
-      "<a href='https://library.city.uji.kyoto.jp/opac/sp/results?keyword=" +
-      BookName.value +
-      "'>宇治市図書館</a>";
+  window.onload = function () {
+    var query = location.search;
+    const BookName = query.slice(1);
+    if (BookName != "") {
+      var result = document.getElementById("result");
+      result.innerHTML = "<p>" + decodeURI(BookName) + "　の検索結果</p>";
 
-    var ritsLib = document.getElementById("ritsLib");
-    ritsLib.innerHTML =
-      "<a href='https://runners.ritsumei.ac.jp/opac/opac_search/?lang=0&amode=2&appname=Netscape&version=5&cmode=0&smode=0&kywd=" +
-      BookName.value +
-      "'>立命館大学図書館</a>";
+      var ujiLib = document.getElementById("ujiLib");
+      ujiLib.innerHTML =
+        "<a href='https://library.city.uji.kyoto.jp/opac/sp/results?keyword=" +
+        BookName +
+        "'>宇治市図書館</a>";
 
-    // var Bookoff = document.getElementById("Bookoff");
-    // Bookoff.innerHTML =
-    //   "<a href='https://www.bookoffonline.co.jp/display/L001,st=a,q=%258E%2595%2588%25E3%258E%25D2'>BookOff</a>";
+      var ritsLib = document.getElementById("ritsLib");
+      ritsLib.innerHTML =
+        "<a href='https://runners.ritsumei.ac.jp/opac/opac_search/?lang=0&amode=2&appname=Netscape&version=5&cmode=0&smode=0&kywd=" +
+        BookName +
+        "'>立命館大学図書館</a>";
 
-    var ujiLib = document.getElementById("UnivCoop");
-    UnivCoop.innerHTML =
-      "<a href='https://online.univ.coop/book/products/?search%5Bcat%5D=0&search%5Bkeyw%5D=" +
-      BookName.value +
-      "'>大学生協</a>";
+      var ujiLib = document.getElementById("UnivCoop");
+      UnivCoop.innerHTML =
+        "<p class='detail'>(大学生協ページは表示までに時間がかかります)</p>" +
+        "<a href='https://online.univ.coop/book/products/?search%5Bcat%5D=0&search%5Bkeyw%5D=" +
+        BookName +
+        "'>大学生協</a>";
 
-    var ujiLib = document.getElementById("KyotoPrifLib");
-    KyotoPrifLib.innerHTML =
-      "<a href='https://www.library.pref.kyoto.jp/cross/cross.html?q=" +
-      BookName.value +
-      "&filter=3'>京都府図書館(南部エリア)</a>";
+      var ujiLib = document.getElementById("KyotoPrifLib");
+      KyotoPrifLib.innerHTML =
+        "<a href='https://www.library.pref.kyoto.jp/cross/cross.html?q=" +
+        BookName +
+        "&filter=3'>京都府図書館(南部エリア)</a>";
+    }
   };
 </script>
 
@@ -78,9 +81,9 @@
     line-height: 0.5;
   }
   .detail {
-    line-height: 0;
+    font-size: 14px;
   }
   #bookoffonline {
-    margin-top: 40px;
+    margin-top: 70px;
   }
 </style>
