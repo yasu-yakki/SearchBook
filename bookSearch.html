@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>書籍一括検索</title>
+  </head>
+  <body>
+    <h3>
+      本の名前を入力(名前の一部でも可)
+      <br />
+    </h3>
+    <input type="text" id="BookName" />
+    <button onclick="SearchBook()">検索</button>
+    <br><br>
+    <h4>宇治市図書館</h4>
+    <h4 id="ujiLib"></h4>
+    <br />
+    <h4>立命館大学図書館</h4>
+    <h4 id="ritsLib"></h4>
+    <br />
+    <!-- <h4>Bookoff</h4>
+    <h4 id="Bookoff"></h4>
+    <br /> -->
+    <h4>大学生協書籍注文サイト</h4>
+    <h6 class="detail">(表示までに時間がかかります)</h6>
+    <h4 id="UnivCoop"></h4>
+    <br />
+    <h4>京都府立図書館</h4>
+    <h4 id="KyotoPrifLib"></h4>
+    <br />
+    <div id="bookoffonline">
+      (参考)<a href="https://www.bookoffonline.co.jp/book/CSfTop.jsp?bg=12">
+        bookoffonlineのページ
+      </ad>
+    </div>
+  </body>
+</html>
+
+<script>
+  var SearchBook = function () {
+    const BookName = document.getElementById("BookName");
+
+    var ujiLib = document.getElementById("ujiLib");
+    ujiLib.innerHTML =
+      "<a href='https://library.city.uji.kyoto.jp/opac/sp/results?fields%5B0%5D=001&keywords%5B0%5D=" +
+      BookName.value +
+      "&matches%5B0%5D=1&narrowField=003&narrowKeywordFrom=&narrowKeywordTo='>宇治市図書館</a>";
+
+    var ritsLib = document.getElementById("ritsLib");
+    ritsLib.innerHTML =
+      "<a href='https://runners.ritsumei.ac.jp/opac/opac_search/?lang=0&amode=2&appname=Netscape&version=5&cmode=0&smode=0&kywd=" +
+      BookName.value +
+      "'>立命館大学図書館</a>";
+
+    // var Bookoff = document.getElementById("Bookoff");
+    // Bookoff.innerHTML =
+    //   "<a href='https://www.bookoffonline.co.jp/display/L001,st=a,q=%258E%2595%2588%25E3%258E%25D2'>BookOff</a>";
+
+    var ujiLib = document.getElementById("UnivCoop");
+    UnivCoop.innerHTML =
+      "<a href='https://online.univ.coop/book/products/?search%5Bcat%5D=0&search%5Bkeyw%5D=" +
+      BookName.value +
+      "'>大学生協</a>";
+
+    var ujiLib = document.getElementById("KyotoPrifLib");
+    KyotoPrifLib.innerHTML =
+      "<a href='https://www.library.pref.kyoto.jp/cross/cross.html?q=" +
+      BookName.value +
+      "'>京都府図書館</a>";
+  };
+</script>
+
+<style>
+  body {
+    line-height: 0.5;
+  }
+  .detail {
+    line-height: 0;
+  }
+  #bookoffonline {
+    margin-top: 40px;
+  }
+</style>
